@@ -1,0 +1,26 @@
+spring:
+  config:
+    activate:
+      on-profile: docker
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:redis_documents}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:rabbitmq_main}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:guest}
+    password: ${SPRING_RABBITMQ_PASSWORD:guest}
+
+storage:
+  local:
+    upload-dir: /app/uploads  # Valor fixo para evitar problemas
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
